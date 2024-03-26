@@ -1,0 +1,45 @@
+.flag-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 240px;
+  background-color: #fff;
+  box-shadow: 11px 10px 19px -17px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: 0.2s;
+
+  img {
+    width: 240px;
+    height: 130px;
+  }
+
+  .flag-info {
+    padding: 1rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+
+    h2 {
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      display: flex;
+      gap: 0.25rem;
+
+      span:first-child {
+        font-weight: 700;
+      }
+    }
+  }
+
+}
+
+.flag-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 11px 10px 19px -17px rgba(0,0,0, 0.7);
+}

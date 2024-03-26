@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useState } from "react";
+import HomePage from './pages/HomePage';
+import CountryInfo from './pages/CountryInfo';
+import { createContext } from 'react';
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/:name",
+    element: <CountryInfo />
+  }
+]);
+
+export const CountryContext = createContext({})
+
+const App = () => {
+  const [countries, setCountries] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <CountryContext.Provider value={{countries, setCountries}}>
+      <RouterProvider router={router} />
+    </CountryContext.Provider>
+  )
 }
 
 export default App;
