@@ -83,8 +83,6 @@ const Countries = () => {
 
   const regionCountries = inputValue !== '' ? searchedCountries() : countriesWithinRegion(selectedValue);
 
-  console.log(countries);
-
   return (
     <div className={`countries-container ${darkTheme ? 'dark': ''}`}>
       <div className="search-filter-container">

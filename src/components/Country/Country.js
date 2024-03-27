@@ -11,9 +11,6 @@ const Country = () => {
 
   const country = countries.filter(country => country.name.common === name)[0];
 
-  console.log(country);
-  console.log(countries);
-
   function findBorderCountry(borderCca3) {
     for (let i = 0; i < countries.length; i++) {
       if (borderCca3 === countries[i].cca3) {
