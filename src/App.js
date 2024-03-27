@@ -26,7 +26,9 @@ const App = () => {
     const fetchCountries = async () => {
       try {
         const countriesData = await fetch('https://restcountries.com/v3.1/all');
+        console.log(countriesData);
         const data = await countriesData.json();
+        console.log(data);
         setCountries(data);
       } catch (error) {
         console.error(error);
