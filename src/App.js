@@ -4,7 +4,6 @@ import { useState } from "react";
 import HomePage from './pages/HomePage';
 import CountryInfo from './pages/CountryInfo';
 import { createContext } from 'react';
-import Country from "./country";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +25,9 @@ const App = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const data = new Country();
-        const countriesData = await data.getAllCountries();
-        setCountries(countriesData);
+        const countriesData = await fetch('https://restcountries.com/v3.1/all');
+        const data = await countriesData.json();
+        setCountries(data);
       } catch (error) {
         console.error(error);
       }
