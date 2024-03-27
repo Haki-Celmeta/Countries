@@ -27,7 +27,7 @@ const FlagCard = ({ image, countryName, population, region, capital }) => {
 
   return (
     <div className={`flag-card ${darkTheme ? 'dark' : ''}`}>
-      {image === -1 ? 'No image': <img src={image} alt="flag" />}
+      <img src={image} alt="flag" />
       <div className="flag-info">
         <h2>{countryName}</h2>
         <p>

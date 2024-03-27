@@ -177,7 +177,7 @@ const Countries = () => {
           regionCountries.map(country => (
             <Link to={`/${country.name.common}`}>
               <FlagCard
-                image={country.flags ? country.flags.png : -1}
+                image={country.flags && country.flags.png ? country.flags.png : null}
                 countryName={country.name.common}
                 population={country.population}
                 region={country.region}
