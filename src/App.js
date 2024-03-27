@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <CountryContext.Provider value={{ countries, setCountries, darkTheme, setDarkTheme }}>
-      {countries.length > 0 ? (
+      {countries.length > 249 ? (
         <RouterProvider router={router} />
       ) : (
         <div>Loading...</div>
