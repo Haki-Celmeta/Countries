@@ -9,15 +9,22 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from "react-router-dom";
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import Tooltip from '@mui/material/Tooltip';
 
-
+//TODO: Make dark theme
+//TODO: Deploy with github pages
+//TODO: Make weather app responsive
 
 const Countries = () => {
   const { countries, setCountries } = useContext(CountryContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
   const open = Boolean(anchorEl);
+
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -71,6 +78,29 @@ const Countries = () => {
     fetchCountries();
   }, [setCountries]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const regionCountries = inputValue !== '' ? searchedCountries() : countriesWithinRegion(selectedValue);
 
   console.log(searchedCountries());
@@ -121,6 +151,17 @@ const Countries = () => {
           <h1 className="no-countries">No Countries found</h1>
         )}
       </div>
+
+      <Tooltip title="Go to top" arrow disableInteractive>
+        <div 
+          className={`move-to-top ${isVisible ? 'show' : ''}`}
+          onClick={handleScrollToTop}
+        >
+          <div>
+            <KeyboardDoubleArrowUpIcon />
+          </div>
+        </div>
+      </Tooltip>
     </div>
   )
 }
