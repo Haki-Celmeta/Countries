@@ -18,15 +18,6 @@ class Country {
       return null;
     }
   }
-
-  /**
-   * It returns a specific country given by its name
-   * 
-   * @param {Array} countryName 
-   */
-  getCountryByName(countryName) {
-    
-  }
 }
 
 export default Country;
