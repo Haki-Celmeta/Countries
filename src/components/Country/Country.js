@@ -32,7 +32,7 @@ const Country = () => {
       </button>
       <div className="country-information-container">
         <div className="flag-container">
-          <img src={country.flags.png} alt="country flag" />
+          <img src={country.flags && country.flags.png ? country.flags.png : null} alt="country flag" />
         </div>
         <div className="country-info">
           <h1>{country.name.common}</h1>
