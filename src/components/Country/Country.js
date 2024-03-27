@@ -9,8 +9,10 @@ const Country = () => {
   const { name } = useParams();
   const { countries, darkTheme } = useContext(CountryContext);
 
-  const country = countries.filter(country => console.log(country.name.common, name));
-
+  const country = countries.filter(country => {
+    console.log(country.name.common, name);
+  })
+  
   console.log(country);
   console.log(countries);
 
@@ -38,7 +40,7 @@ const Country = () => {
           <img src={country.flags && country.flags.png ? country.flags.png : null} alt="flag" />
         </div>
         <div className="country-info">
-          <h1>{country.name.common}</h1>
+          <h1>{country.name.common ? country.name.common : 'No info'}</h1>
           <div className="information">
             <p className="native-names-container">
               <span>Native Name:</span>
