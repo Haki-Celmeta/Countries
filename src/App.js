@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState } from "react";
 import HomePage from './pages/HomePage';
@@ -41,8 +41,12 @@ const App = () => {
   console.log(countries);
 
   return (
-    <CountryContext.Provider value={{countries, setCountries, darkTheme, setDarkTheme}}>
-      <RouterProvider router={router} />
+    <CountryContext.Provider value={{ countries, setCountries, darkTheme, setDarkTheme }}>
+      {countries.length > 0 ? (
+        <RouterProvider router={router} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </CountryContext.Provider>
   )
 }
