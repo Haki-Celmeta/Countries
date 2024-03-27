@@ -7,11 +7,11 @@ import { createContext } from 'react';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Countries",
     element: <HomePage />,
   },
   {
-    path: "/:name",
+    path: "/Countries/:name",
     element: <CountryInfo />
   }
 ]);
