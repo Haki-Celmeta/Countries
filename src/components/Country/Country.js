@@ -9,7 +9,7 @@ const Country = () => {
   const { name } = useParams();
   const { countries, darkTheme } = useContext(CountryContext);
 
-  const country = countries.filter(country => country.name.common === name)[0];
+  const country = countries.filter(country => country.name.common === name);
 
   console.log(country);
   console.log(countries);
