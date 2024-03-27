@@ -2,7 +2,6 @@ import React from "react";
 import './_countries.scss';
 import { useState, useEffect, useContext } from "react";
 import { CountryContext } from "../../App";
-import Country from "../../country";
 import FlagCard from "../Flag/flag-card";
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -12,11 +11,8 @@ import { Link } from "react-router-dom";
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import Tooltip from '@mui/material/Tooltip';
 
-//TODO: Deploy with github pages
-//TODO: Make weather app responsive
-
 const Countries = () => {
-  const { countries, setCountries } = useContext(CountryContext);
+  const { countries } = useContext(CountryContext);
   const { darkTheme } = useContext(CountryContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [inputValue, setInputValue] = useState('');
@@ -61,20 +57,6 @@ const Countries = () => {
     const searchedCountriesValue = countries.filter(country => compareStartsWith(country.name.common.toLowerCase(), inputValue));
     return searchedCountriesValue;
   }
-
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const data = new Country();
-        const countriesData = await data.getAllCountries();
-        setCountries(countriesData);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchCountries();
-  }, [setCountries]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -176,7 +158,7 @@ const Countries = () => {
       <div className="countries">
         {regionCountries.length !== 0 ? (
           regionCountries.map(country => (
-            <Link to={`/${country.name.common}`}>
+            <Link to={`/Countries/${country.name.common}`}>
               <FlagCard
                 image={country.flags && country.flags.png ? country.flags.png : null}
                 countryName={country.name.common}
