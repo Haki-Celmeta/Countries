@@ -22,6 +22,8 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [darkTheme, setDarkTheme] = useState(false);
 
+  console.log(countries);
+
   return (
     <CountryContext.Provider value={{countries, setCountries, darkTheme, setDarkTheme}}>
       <RouterProvider router={router} />

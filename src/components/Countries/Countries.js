@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import Tooltip from '@mui/material/Tooltip';
 
-//TODO: Make dark theme
 //TODO: Deploy with github pages
 //TODO: Make weather app responsive
 
@@ -101,6 +100,8 @@ const Countries = () => {
   };
 
   const regionCountries = inputValue !== '' ? searchedCountries() : countriesWithinRegion(selectedValue);
+
+  console.log(countries);
 
   return (
     <div className={`countries-container ${darkTheme ? 'dark': ''}`}>
