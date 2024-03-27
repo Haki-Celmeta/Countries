@@ -4,13 +4,15 @@
   justify-content: center;
   align-items: center;
   padding-top: 3.5rem;
+  transition: 0.3s ease;
 
   .search-filter-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
+    padding-top: 3rem;
   }
 
   .search-bar {
@@ -21,16 +23,19 @@
     gap: 0.5rem;
     padding: 0.5rem;
     box-shadow: 11px 10px 19px -17px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
 
     input {
       border: none;
       outline: none;
       width: 250px;
+      transition: 0.3s ease;
     }
   }
 
   .filter-container {
     background-color: #fff;
+    transition: 0.3s ease;
 
     > div:first-child {
       display: flex;
@@ -83,6 +88,33 @@
   .move-to-top.show {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+.countries-container.dark {
+  background-color: hsl(207, 26%, 17%);
+
+  .search-bar.dark {
+    background-color: hsl(209, 23%, 22%);
+    color: #fff;
+
+    input {
+      background-color: hsl(209, 23%, 22%);
+      color: #fff;
+    }
+    input::placeholder {
+      color: #c9c9c9;
+    }
+  }
+
+  .filter-container.dark {
+    background-color: hsl(209, 23%, 22%);
+    color: #fff;
+
+    .menu-item.dark {
+      background-color: hsl(209, 23%, 22%);
+      color: #fff;
+    }
   }
 }
 

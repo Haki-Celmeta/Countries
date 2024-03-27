@@ -7,7 +7,7 @@ import { formatPopulation } from "../Flag/flag-card";
 
 const Country = () => {
   const { name } = useParams();
-  const { countries } = useContext(CountryContext);
+  const { countries, darkTheme } = useContext(CountryContext);
 
   const country = countries.filter(country => country.name.common === name)[0];
 
@@ -24,10 +24,8 @@ const Country = () => {
     window.history.back();
   };
 
-  console.log(country);
-
   return (
-    <div className="country-container">
+    <div className={`country-container ${darkTheme ? 'dark': ''}`}>
       <button id="back-button" onClick={handleBackButtonClick}>
         <ArrowBackIcon fontSize="small" />
         <span>Back</span>

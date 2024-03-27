@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import './_flag-card.scss';
+import { CountryContext } from "../../App";
 
 
 /**
@@ -20,11 +21,12 @@ export function formatPopulation(population) {
 }
 
 const FlagCard = ({ image, countryName, population, region, capital }) => {
+  const {darkTheme} = useContext(CountryContext);
 
   const formatedNumber = formatPopulation(population);
 
   return (
-    <div className="flag-card">
+    <div className={`flag-card ${darkTheme ? 'dark' : ''}`}>
       <img src={image} alt="flag" />
       <div className="flag-info">
         <h2>{countryName}</h2>

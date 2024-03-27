@@ -20,9 +20,10 @@ export const CountryContext = createContext({})
 
 const App = () => {
   const [countries, setCountries] = useState([]);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   return (
-    <CountryContext.Provider value={{countries, setCountries}}>
+    <CountryContext.Provider value={{countries, setCountries, darkTheme, setDarkTheme}}>
       <RouterProvider router={router} />
     </CountryContext.Provider>
   )

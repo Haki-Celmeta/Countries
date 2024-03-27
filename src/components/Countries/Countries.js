@@ -18,13 +18,12 @@ import Tooltip from '@mui/material/Tooltip';
 
 const Countries = () => {
   const { countries, setCountries } = useContext(CountryContext);
+  const { darkTheme } = useContext(CountryContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const open = Boolean(anchorEl);
-
-
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -103,16 +102,14 @@ const Countries = () => {
 
   const regionCountries = inputValue !== '' ? searchedCountries() : countriesWithinRegion(selectedValue);
 
-  console.log(searchedCountries());
-
   return (
-    <div className="countries-container">
+    <div className={`countries-container ${darkTheme ? 'dark': ''}`}>
       <div className="search-filter-container">
-        <div className="search-bar">
+        <div className={`search-bar ${darkTheme ? 'dark' : ''}`}>
           <SearchIcon />
           <input value={inputValue} onChange={handleInputChange} placeholder="Search for a country" />
         </div>
-        <div className="filter-container">
+        <div className={`filter-container ${darkTheme ? 'dark' : ''}`}>
           <div onClick={handleClick}>
             <span>Filter by Region</span>
             <KeyboardArrowDownIcon fontSize="small" />
@@ -125,13 +122,53 @@ const Countries = () => {
             MenuListProps={{
               'aria-labelledby': 'basic-button',
             }}
+            sx={{'& .MuiList-root': {
+                bgcolor: darkTheme ? 'hsl(209, 23%, 22%) !important' : '#fff', 
+                color: darkTheme ? '#fff' : '#000',
+                '&:hover': {bgcolor: darkTheme ? 'hsl(207, 20%, 33%)': 'rgba(0, 0, 0, 0.04)'}}}}
           >
-            <MenuItem onClick={() => handleClose('All')} sx={{ width: '200px' }}>All</MenuItem>
-            <MenuItem onClick={() => handleClose('Africa')} sx={{ width: '200px' }}>Africa</MenuItem>
-            <MenuItem onClick={() => handleClose('Americas')} sx={{ width: '200px' }}>Americas</MenuItem>
-            <MenuItem onClick={() => handleClose('Asia')} sx={{ width: '200px' }}>Asia</MenuItem>
-            <MenuItem onClick={() => handleClose('Europe')} sx={{ width: '200px' }}>Europe</MenuItem>
-            <MenuItem onClick={() => handleClose('Oceania')} sx={{ width: '200px' }}>Oceania</MenuItem>
+            <MenuItem 
+              onClick={() => handleClose('All')} 
+              sx={{ width: '200px', 
+                '&:hover': {bgcolor: darkTheme ? 'hsl(207, 20%, 33%)': 'rgba(0, 0, 0, 0.04)'} }}
+            >
+              All
+            </MenuItem>
+            <MenuItem 
+              onClick={() => handleClose('Africa')} 
+              sx={{ width: '200px',
+                '&:hover': {bgcolor: darkTheme ? 'hsl(207, 20%, 33%)': 'rgba(0, 0, 0, 0.04)'}  }}
+            >
+              Africa
+            </MenuItem>
+            <MenuItem 
+              onClick={() => handleClose('Americas')} 
+              sx={{ width: '200px',
+                '&:hover': {bgcolor: darkTheme ? 'hsl(207, 20%, 33%)': 'rgba(0, 0, 0, 0.04)'}  }}
+            >
+              Americas
+            </MenuItem>
+            <MenuItem 
+              onClick={() => handleClose('Asia')} 
+              sx={{ width: '200px',
+                '&:hover': {bgcolor: darkTheme ? 'hsl(207, 20%, 33%)': 'rgba(0, 0, 0, 0.04)'}  }}
+            >
+              Asia
+            </MenuItem>
+            <MenuItem 
+              onClick={() => handleClose('Europe')} 
+              sx={{ width: '200px',
+                '&:hover': {bgcolor: darkTheme ? 'hsl(207, 20%, 33%)': 'rgba(0, 0, 0, 0.04)'}  }}
+            >
+              Europe
+            </MenuItem>
+            <MenuItem 
+              onClick={() => handleClose('Oceania')} 
+              sx={{ width: '200px',
+                '&:hover': {bgcolor: darkTheme ? 'hsl(207, 20%, 33%)': 'rgba(0, 0, 0, 0.04)'}  }}
+            >
+              Oceania
+            </MenuItem>
           </Menu>
         </div>
       </div>
